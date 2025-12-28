@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4mt5ivycteyy"]
+[gd_scene load_steps=12 format=3 uid="uid://b4mt5ivycteyy"]
 
 [ext_resource type="Texture2D" uid="uid://14jgtc2a5yuh" path="res://Assets/Sprites/player-Sheet.png" id="1_hygh2"]
 
@@ -71,13 +71,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hygh2"]
+radius = 4.0
+height = 18.0
+
 [node name="SilentKnight_CharacterBody2D" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_owaji")
-animation = &"idle_animation"
+animation = &"move_animation"
 autoplay = "idle_animation"
-frame_progress = 0.7182423
+frame_progress = 0.061655488
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -10)
+shape = SubResource("CapsuleShape2D_hygh2")
