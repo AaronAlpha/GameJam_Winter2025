@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://5ad6yk7kcvqy"]
+[gd_scene load_steps=3 format=3 uid="uid://5ad6yk7kcvqy"]
+
+[ext_resource type="PackedScene" uid="uid://b4mt5ivycteyy" path="res://Scenes/silent_knight_character_body_2d.tscn" id="1_p4mjc"]
+
+[sub_resource type="TileSet" id="TileSet_p4mjc"]
 
 [node name="TestingScene_Node2D" type="Node2D"]
+
+[node name="SilentKnight_CharacterBody2D" parent="." instance=ExtResource("1_p4mjc")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -11)
+zoom = Vector2(4, 4)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_p4mjc")
+format = 2
