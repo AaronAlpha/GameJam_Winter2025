@@ -74,10 +74,10 @@ animations = [{
 [node name="SilentKnight_CharacterBody2D" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_owaji")
 animation = &"idle_animation"
 autoplay = "idle_animation"
-frame_progress = 0.87012136
+frame_progress = 0.72733396
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
