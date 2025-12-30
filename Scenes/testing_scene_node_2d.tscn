@@ -43,6 +43,7 @@ position = Vector2(0, -11)
 zoom = Vector2(4, 4)
 
 [node name="SilentKnight_32x32_CharacterBody2D" parent="." instance=ExtResource("2_2vh3t")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="SilentKnight_32x32_CharacterBody2D"]
 
