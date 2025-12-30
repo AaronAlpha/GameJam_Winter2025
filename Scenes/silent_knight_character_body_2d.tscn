@@ -280,11 +280,11 @@ height = 18.0
 script = ExtResource("1_1l7ou")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(7, -15)
+position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_owaji")
-animation = &"jump_animation"
+animation = &"death_animation"
 autoplay = "idle_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(-7, -10)
 shape = SubResource("CapsuleShape2D_hygh2")

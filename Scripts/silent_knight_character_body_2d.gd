@@ -3,6 +3,8 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -300.0
 
+var leftFlipBool = false
+
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("idle_animation")
@@ -29,6 +31,8 @@ func playerMovement(delta):
 	
 	# movement = left
 	elif Input.is_action_pressed("ui_left"):
+		leftFlipBool = true
+		
 		velocity.x = -SPEED
 		
 		$AnimatedSprite2D.flip_h = true
@@ -36,7 +40,9 @@ func playerMovement(delta):
 		
 		# because of the width of the sprite, the collision shape needs to be flipped across the y axis 
 		# to 'be with' the sprite after flipping
-		$CollisionShape2D.position[0] *= -1
+		if leftFlipBool:
+			$CollisionShape2D.position[0] = -$CollisionShape2D.position[0]
+			leftFlipBool = false
 	
 	# when player has no direction and no velocity -> i.e. stationary
 	# make knight idle
