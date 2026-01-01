@@ -1,7 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://uxvvaxuqpe3a"]
+[gd_scene load_steps=20 format=3 uid="uid://uxvvaxuqpe3a"]
 
 [ext_resource type="Texture2D" uid="uid://oxh7mpjfreyj" path="res://Assets/Sprites/New Version/nutcracker-Sheet.png" id="1_ladjm"]
 [ext_resource type="PackedScene" uid="uid://cgkhpp02r34fi" path="res://Scenes/state_machine_node.tscn" id="2_lfcwl"]
+[ext_resource type="Script" uid="uid://d0br3jkarro1g" path="res://Scripts/States/NutCrackerStates/NutcrackerIdle.gd" id="3_btw76"]
+[ext_resource type="Script" uid="uid://d0tu2ky7uuv74" path="res://Scripts/States/NutCrackerStates/NutcrackerFollow.gd" id="4_sdnda"]
+[ext_resource type="Script" uid="uid://sfsomc2o04i8" path="res://Scripts/States/NutCrackerStates/NutcrackerStab.gd" id="5_wflb2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfcwl"]
 atlas = ExtResource("1_ladjm")
@@ -127,4 +130,25 @@ z_index = 1
 position = Vector2(-13, -23)
 shape = SubResource("RectangleShape2D_ladjm")
 
-[node name="StateMachine_Node" parent="." instance=ExtResource("2_lfcwl")]
+[node name="StateMachine_Node" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_lfcwl")]
+initial_state = NodePath("NutcrackerIdle")
+
+[node name="NutcrackerIdle" type="Node" parent="StateMachine_Node" node_paths=PackedStringArray("enemy")]
+script = ExtResource("3_btw76")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://d0br3jkarro1g"
+
+[node name="NutcrackerFollow" type="Node" parent="StateMachine_Node" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_sdnda")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://d0tu2ky7uuv74"
+
+[node name="NutcrackerSlash" type="Node" parent="StateMachine_Node" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_wflb2")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://sfsomc2o04i8"
+
+[node name="NutcrackerStab" type="Node" parent="StateMachine_Node" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_wflb2")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://sfsomc2o04i8"
