@@ -4,18 +4,18 @@ class_name NutcrackerIdle
 
 
 @export var enemy : CharacterBody2D
-@export var idle_move_speed := 10
+@export var idle_move_speed := 20
 
 var player : CharacterBody2D
 
 
-var move_dir = Vector2(0, 0)
+var move_dir : Vector2
 var wander_time : float
 
 
 func random_wander():
-	move_dir = Vector2(  randf_range(-1, 1) , 0)
-	wander_time = randf_range(0, 2)
+	move_dir = Vector2(  randf_range(-1, 1) , 0 ) # ensuring that enemy does not idle_move in the y-axis
+	wander_time = randf_range(1, 2)
 
 
 # and then when we Enter() this state (EnemyIdle state), we call the randomizer func
