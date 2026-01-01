@@ -22,12 +22,16 @@ func random_wander():
 		# if dir is +ve -> i.e. facing right
 		$"../../AnimatedSprite2D".flip_h = true
 		$"../../LeftFacing_CollisionShape2D".visible = false
+		$"../../LeftFacing_CollisionShape2D".disabled = true
 		$"../../RightFacing_CollisionShape2D".visible = true
+		$"../../RightFacing_CollisionShape2D".disabled = false
 	else:
 		# if dir is -ve -> i.e. facing left
 		$"../../AnimatedSprite2D".flip_h = false
 		$"../../LeftFacing_CollisionShape2D".visible = true
+		$"../../LeftFacing_CollisionShape2D".disabled = false
 		$"../../RightFacing_CollisionShape2D".visible = false
+		$"../../RightFacing_CollisionShape2D".disabled = true
 	
 	wander_time = randf_range(1, 2)
 
@@ -66,7 +70,7 @@ func PhysicsUpdate(delta : float):
 	var direction = player.global_position - enemy.global_position
 	
 	# if distance (direction) is within some threshold, we transition from Idle to Follow
-	if direction.length() < 25:
-		Transitioned.emit(self, "EnemyFollow")
+	if direction.length() < 100:
+		Transitioned.emit(self, "NutcrackerFollow")
 	
 	

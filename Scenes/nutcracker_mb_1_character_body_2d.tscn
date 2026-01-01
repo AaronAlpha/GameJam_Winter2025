@@ -1,10 +1,27 @@
-[gd_scene load_steps=28 format=3 uid="uid://uxvvaxuqpe3a"]
+[gd_scene load_steps=29 format=3 uid="uid://uxvvaxuqpe3a"]
 
+[ext_resource type="Script" uid="uid://dagtdivksdvyf" path="res://Scripts/nutcracker_mb_1_character_body_2d.gd" id="1_l82r8"]
 [ext_resource type="Texture2D" uid="uid://oxh7mpjfreyj" path="res://Assets/Sprites/New Version/nutcracker-Sheet.png" id="1_ladjm"]
 [ext_resource type="PackedScene" uid="uid://cgkhpp02r34fi" path="res://Scenes/state_machine_node.tscn" id="2_lfcwl"]
 [ext_resource type="Script" uid="uid://d0br3jkarro1g" path="res://Scripts/States/NutCrackerStates/NutcrackerIdle.gd" id="3_btw76"]
 [ext_resource type="Script" uid="uid://d0tu2ky7uuv74" path="res://Scripts/States/NutCrackerStates/NutcrackerFollow.gd" id="4_sdnda"]
 [ext_resource type="Script" uid="uid://sfsomc2o04i8" path="res://Scripts/States/NutCrackerStates/NutcrackerStab.gd" id="5_wflb2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fls11"]
+atlas = ExtResource("1_ladjm")
+region = Rect2(0, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bttcb"]
+atlas = ExtResource("1_ladjm")
+region = Rect2(48, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1s0w"]
+atlas = ExtResource("1_ladjm")
+region = Rect2(96, 64, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mase0"]
+atlas = ExtResource("1_ladjm")
+region = Rect2(144, 64, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wflb2"]
 atlas = ExtResource("1_ladjm")
@@ -37,22 +54,6 @@ region = Rect2(288, 0, 48, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4sdgw"]
 atlas = ExtResource("1_ladjm")
 region = Rect2(336, 0, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fls11"]
-atlas = ExtResource("1_ladjm")
-region = Rect2(0, 64, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bttcb"]
-atlas = ExtResource("1_ladjm")
-region = Rect2(48, 64, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1s0w"]
-atlas = ExtResource("1_ladjm")
-region = Rect2(96, 64, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mase0"]
-atlas = ExtResource("1_ladjm")
-region = Rect2(144, 64, 48, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47him"]
 atlas = ExtResource("1_ladjm")
@@ -88,6 +89,23 @@ region = Rect2(192, 128, 48, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bttcb"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fls11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bttcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1s0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mase0")
+}],
+"loop": true,
+"name": &"chase_animation",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wflb2")
@@ -173,23 +191,27 @@ animations = [{
 size = Vector2(10, 38)
 
 [node name="Nutcracker_MB1_CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_l82r8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_bttcb")
-animation = &"death_animation"
+animation = &"chase_animation"
 autoplay = "move_animation"
+frame = 1
+frame_progress = 0.8744511
 
 [node name="LeftFacing_CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
 position = Vector2(13, -22)
 shape = SubResource("RectangleShape2D_ladjm")
+debug_color = Color(0, 0.6265115, 0.5134231, 0.41960785)
 
 [node name="RightFacing_CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 z_index = 1
-position = Vector2(-13, -23)
+position = Vector2(-13, -22)
 shape = SubResource("RectangleShape2D_ladjm")
+debug_color = Color(0.95592135, 0, 0.5432323, 0.41960785)
 
 [node name="StateMachine_Node" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_lfcwl")]
 initial_state = NodePath("NutcrackerIdle")

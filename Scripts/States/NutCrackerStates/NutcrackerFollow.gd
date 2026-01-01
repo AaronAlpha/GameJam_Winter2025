@@ -9,6 +9,9 @@ class_name NutcrackerFollow
 var player : CharacterBody2D
 
 func Enter():
+	
+	$"../../AnimatedSprite2D".play("chase_animation")
+	
 	player = get_tree().get_first_node_in_group("Player")
 	
 func PhysicsUpdate(_delta : float):
@@ -28,7 +31,7 @@ func PhysicsUpdate(_delta : float):
 	# Transitioning between states is state-dependent; 
 	# following is transitioning from follow to idle
 	# want follow state to go back to being idle once reached a certain threshold
-	if direction.length() > 50:
-		Transitioned.emit(self, "EnemyIdle")
+	if direction.length() > 100:
+		Transitioned.emit(self, "NutcrackerIdle")
 		# above passes in 'self' (which is the current_state) and 'idle' (which is the new_state we want to 
 		# Transition to)
