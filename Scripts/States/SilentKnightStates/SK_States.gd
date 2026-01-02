@@ -52,18 +52,7 @@ func idleState():
 		Transitioned.emit(self, "SilentKnightIdle")
 
 
-# for the death/slash/stab acnimations
-func attackAnimations(animation_name):
-	# animation_name has to be a text (i.e. it has to be in quotes)
-	if direction > 0 or Input.is_action_pressed("move_right"): # moving right
-		$"../../AnimatedSprite2D".visible = false
-		$"../../L_AnimatedSprite2D".visible = true
-		$"../../L_AnimatedSprite2D".play(animation_name)
-		
-	elif direction < 0 or Input.is_action_pressed("move_left"): # moving left
-		$"../../AnimatedSprite2D".visible = false
-		$"../../R_AnimatedSprite2D".visible = true
-		$"../../R_AnimatedSprite2D".play(animation_name)
+
 
 
 func check_death():

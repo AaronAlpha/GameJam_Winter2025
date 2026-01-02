@@ -4,12 +4,22 @@ class_name SilentKnightStab
 
 
 func Enter():
-	$"../../CollisionShape2D".visible = true
-	$"../../CollisionShape2D".disabled = false
+
 
 	
 	check_death()
-	attackAnimations("stab_animation")
+
+	if direction > 0 or Input.is_action_pressed("move_right"): # moving right
+		$"../../AnimatedSprite2D".visible = false
+		$"../../L_AnimatedSprite2D".visible = true
+		$"../../L_AnimatedSprite2D".play("stab_animation")
+	
+	elif direction < 0 or Input.is_action_pressed("move_left"): # moving left
+		$"../../AnimatedSprite2D".visible = false
+		$"../../R_AnimatedSprite2D".visible = true
+		$"../../R_AnimatedSprite2D".play("stab_animation")
+
+
 
 func Update(delta : float):
 	#check_death()

@@ -219,11 +219,11 @@ sprite_frames = SubResource("SpriteFrames_bttcb")
 animation = &"move_animation"
 autoplay = "move_animation"
 
-[node name="Attack_AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+[node name="Attack_AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_f33ga")
-animation = &"death_animation"
+animation = &"slash_animation"
 
 [node name="LeftFacing_CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
@@ -256,16 +256,19 @@ script = ExtResource("5_wflb2")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://sfsomc2o04i8"
 
+[node name="SlashTimer" type="Timer" parent="StateMachine_Node/NutcrackerSlash"]
+
 [node name="NutcrackerStab" type="Node" parent="StateMachine_Node" node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_wflb2")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://sfsomc2o04i8"
 
+[node name="StabTimer" type="Timer" parent="StateMachine_Node/NutcrackerStab"]
+
 [node name="HitBox_Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox_Area2D"]
+visible = false
 position = Vector2(0, -29)
 shape = SubResource("CircleShape2D_l82r8")
-
-[connection signal="body_entered" from="HitBox_Area2D" to="." method="_on_hit_box_area_2d_body_entered"]
-[connection signal="body_exited" from="HitBox_Area2D" to="." method="_on_hit_box_area_2d_body_exited"]

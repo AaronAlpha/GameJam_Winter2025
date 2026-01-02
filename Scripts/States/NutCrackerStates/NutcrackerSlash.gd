@@ -3,13 +3,59 @@ extends State
 class_name NutcrackerSlash
 
 @export var enemy : CharacterBody2D
-
+var player : CharacterBody2D
+var direction
 
 func Enter():
-	pass
+	player = get_tree().get_first_node_in_group("Player")
+	
+	direction = player.global_position - enemy.global_position
+	
+	enemy.velocity = Vector2.ZERO
+	$"../../AnimatedSprite2D".stop()
+	$"../../AnimatedSprite2D".visible = false
+	$"../../Attack_AnimatedSprite2D".visible = true
+	
+	
+	if direction[0] > 0: # chceking the sign of the x values
+		# if dir is +ve -> i.e. facing right
+		$"../../Attack_AnimatedSprite2D".flip_h = true
+		$"../../LeftFacing_CollisionShape2D".visible = false
+		$"../../LeftFacing_CollisionShape2D".disabled = true
+		$"../../RightFacing_CollisionShape2D".visible = true
+		$"../../RightFacing_CollisionShape2D".disabled = false
+	else:
+		# if dir is -ve -> i.e. facing left
+		$"../../Attack_AnimatedSprite2D".flip_h = false
+		$"../../LeftFacing_CollisionShape2D".visible = true
+		$"../../LeftFacing_CollisionShape2D".disabled = false
+		$"../../RightFacing_CollisionShape2D".visible = false
+		$"../../RightFacing_CollisionShape2D".disabled = true
+
+	$"../../Attack_AnimatedSprite2D".play("slash_animation")
+
+
+
 
 func Update(delta):
-	pass
+	player = get_tree().get_first_node_in_group("Player")
+	
+	direction = player.global_position - enemy.global_position
 
 func PhysicsUpdate(delta):
-	pass
+	if enemy:
+		if direction.length() < 0:
+			
+			GameManagerSingleton.playerHealth -= 5
+			print(GameManagerSingleton.playerHealth)
+	
+	direction = player.global_position - enemy.global_position 
+	
+	if direction.length() > 100:
+		Transitioned.emit(self, "NutcrackerIdle")
+	
+	elif direction.length() < 100:
+		Transitioned.emit(self, "NutcrackerFollow")
+		
+	elif direction.length() > 25 and direction.length() < 50:
+		Transitioned.emit(self, "NutcrackerStab")

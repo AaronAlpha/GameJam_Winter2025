@@ -3,13 +3,21 @@ extends SilentKnight_States
 class_name SilentKnightSlash
 
 func Enter():
-	$"../../CollisionShape2D".visible = true
-	$"../../CollisionShape2D".disabled = false
-
 	check_death()
 	
 	slash = true
-	attackAnimations("slash_animation")
+	
+	if direction > 0 or Input.is_action_pressed("move_right"): # moving right
+		$"../../AnimatedSprite2D".visible = false
+		$"../../L_AnimatedSprite2D".visible = true
+		$"../../L_AnimatedSprite2D".play("slash_animation")
+	
+	elif direction < 0 or Input.is_action_pressed("move_left"): # moving left
+		$"../../AnimatedSprite2D".visible = false
+		$"../../R_AnimatedSprite2D".visible = true
+		$"../../R_AnimatedSprite2D".play("slash_animation")
+
+	
 	
 	enemy = get_tree().get_first_node_in_group("MiniBosses")
 	

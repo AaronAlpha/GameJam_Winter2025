@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://csr4x8rk4vrdw"]
+
+[ext_resource type="Texture2D" uid="uid://cyx7xigdir3mj" path="res://Assets/Sprites/New Version/turret-Sheet.png" id="1_r6dyf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6dyf"]
+atlas = ExtResource("1_r6dyf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q27ho"]
+atlas = ExtResource("1_r6dyf")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6la8f"]
+atlas = ExtResource("1_r6dyf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4sub"]
+atlas = ExtResource("1_r6dyf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cx6r8"]
+atlas = ExtResource("1_r6dyf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7bvv"]
+atlas = ExtResource("1_r6dyf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bskw"]
+atlas = ExtResource("1_r6dyf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i0qr"]
+atlas = ExtResource("1_r6dyf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0bskw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6dyf")
+}],
+"loop": true,
+"name": &"idle_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q27ho")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6la8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4sub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cx6r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7bvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bskw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8i0qr")
+}],
+"loop": true,
+"name": &"shoot_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8i0qr"]
+
+[node name="Turrent_CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_0bskw")
+animation = &"new_animation"
+autoplay = "idle_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -10)
+shape = SubResource("RectangleShape2D_8i0qr")

@@ -5,11 +5,12 @@ class_name NutcrackerFollow
 @export var enemy : CharacterBody2D
 @export var follow_move_speed := 40.0
 
+var nutC_follow : bool = false
 
 var player : CharacterBody2D
 
 func Enter():
-	
+	nutC_follow = true
 	$"../../AnimatedSprite2D".play("chase_animation")
 	
 	player = get_tree().get_first_node_in_group("Player")
@@ -35,3 +36,9 @@ func PhysicsUpdate(_delta : float):
 		Transitioned.emit(self, "NutcrackerIdle")
 		# above passes in 'self' (which is the current_state) and 'idle' (which is the new_state we want to 
 		# Transition to)
+	
+	#if direction.length() < 50:
+		#Transitioned.emit(self, "NutcrackerStab")
+	
+	if direction.length() < 25:
+		Transitioned.emit(self, "NutcrackerSlash")

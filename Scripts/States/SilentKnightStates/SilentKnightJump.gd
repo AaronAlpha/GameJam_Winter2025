@@ -8,11 +8,9 @@ func Enter():
 
 	#check_death()
 
-	
-	#if jump == false and player.is_on_floor():
 	$"../../AnimatedSprite2D".play("jump_animation")
 		
-		#jump = true
+
 	
 
 func Update(delta : float):
@@ -23,39 +21,17 @@ func PhysicsUpdate(delta : float):
 	if player:
 		
 		player.velocity.y = jumpSpeed # adding the jump velocity to the player
-		Transitioned.emit(self, "SilentKnightMove")
+		
+		# move state
+	if Input.is_action_just_pressed("jump") or  Input.is_action_just_pressed("move_left")  or  Input.is_action_just_pressed("move_right"):
+		 
+		if (direction > 0 or Input.is_action_pressed("move_right")) or (direction < 0 or Input.is_action_pressed("move_left")): # moving right
+			Transitioned.emit(self, "SilentKnightMove")
+			
+		if Input.is_action_just_pressed("jump") and player.is_on_floor():
 
-		#if direction > 0 or Input.is_action_pressed("move_right"):
-			#
-			## if it does exist: set velocity...
-			#player.velocity.x = direction * move_speed
-			## should only be in x-axis
-			##Transitioned.emit(self, "SilentKnightMove")
-		#
-		#elif direction < 0 or Input.is_action_pressed("move_left"):
-			## if it does exist: set velocity...
-			#player.velocity.x = direction * move_speed
-			## should only be in x-axis
-			#Transitioned.emit(self, "SilentKnightMove")
-		#else:
-			##player.velocity.x = move_toward(player.velocity.x, 0, move_speed)
-			#Transitioned.emit(self, "SilentKnightIdle")
+			Transitioned.emit(self, "SilentKnightJump")
 		
-		#jump = true
-		
-		
-		#if direction > 0 or Input.is_action_pressed("move_right"):
-		#
-			## if it does exist: set velocity...
-			#player.velocity.x = direction * move_speed
-			## should only be in x-axis
-			#Transitioned.emit(self, "SilentKnightMove")
-			#
-
-	
-
-
-		
-		
-		
-	
+	else:
+		jump = false
+		Transitioned.emit(self, "SilentKnightIdle")

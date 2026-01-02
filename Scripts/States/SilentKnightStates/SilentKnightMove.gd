@@ -38,20 +38,16 @@ func PhysicsUpdate(delta : float):
 			# if it does exist: set velocity...
 			player.velocity.x = direction * move_speed
 			# should only be in x-axis
-			Transitioned.emit(self, "SilentKnightMove")
+	
 		
 		elif direction < 0 or Input.is_action_pressed("move_left"):
 			# if it does exist: set velocity...
 			player.velocity.x = direction * move_speed
 			# should only be in x-axis
-			Transitioned.emit(self, "SilentKnightMove")
-		#else:
-			#player.velocity.x = move_toward(player.velocity.x, 0, move_speed)
+
+		else:
+			player.velocity.x = move_toward(player.velocity.x, 0, move_speed)
 			#Transitioned.emit(self, "SilentKnightIdle")
-		#
-		#if Input.is_action_just_pressed("jump") and player.is_on_floor():
-			#Transitioned.emit(self, "SilentKnightJump")
-		#movement(delta)
 
 	# attackStates
 	if Input.is_action_just_pressed("Slash"):
@@ -62,13 +58,11 @@ func PhysicsUpdate(delta : float):
 	
 	
 	# move states
-	if ((direction > 0 or Input.is_action_pressed("move_right")) or (direction < 0 or Input.is_action_pressed("move_left"))) and player.is_on_floor():
-		Transitioned.emit(self, "SilentKnightMove")
-	else:
-		Transitioned.emit(self, "SilentKnightIdle")
-
-	if Input.is_action_just_pressed("jump") and player.is_on_floor():
-		Transitioned.emit(self, "SilentKnightJump")
-
+		 
+	if (direction > 0 or Input.is_action_pressed("move_right")) or (direction < 0 or Input.is_action_pressed("move_left")): # moving right
+		if Input.is_action_just_pressed("jump") and player.is_on_floor():
+			player.velocity.y = jumpSpeed
+			Transitioned.emit(self, "SilentKnightMove")
+		
 	else:
 		Transitioned.emit(self, "SilentKnightIdle")

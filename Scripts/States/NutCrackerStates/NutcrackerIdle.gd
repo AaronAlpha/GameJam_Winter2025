@@ -3,6 +3,7 @@ extends State
 class_name NutcrackerIdle
 
 
+
 @export var enemy : CharacterBody2D
 @export var idle_move_speed := 20
 
@@ -13,8 +14,11 @@ var move_dir : Vector2
 var wander_time : float
 
 
+
 func random_wander():
 	move_dir = Vector2(  randf_range(-1, 1) , 0 ) # ensuring that enemy does not idle_move in the y-axis
+	
+	#move_dir = direction
 	
 	if move_dir[0] > 0: # chceking the sign of the x values
 		# if dir is +ve -> i.e. facing right
@@ -36,6 +40,10 @@ func random_wander():
 
 # and then when we Enter() this state (EnemyIdle state), we call the randomizer func
 func Enter():
+
+	$"../../Attack_AnimatedSprite2D".stop()
+	$"../../Attack_AnimatedSprite2D".visible = false
+	$"../../AnimatedSprite2D".visible = true
 	$"../../AnimatedSprite2D".play("move_animation")
 	
 	
@@ -70,5 +78,10 @@ func PhysicsUpdate(delta : float):
 	# if distance (direction) is within some threshold, we transition from Idle to Follow
 	if direction.length() < 100:
 		Transitioned.emit(self, "NutcrackerFollow")
+	
+	
+	
+
+	
 	
 	

@@ -3,6 +3,7 @@ extends SilentKnight_States
 class_name SilentKnightIdle
 
 
+
 # and then when we Enter() this state (EnemyIdle state), we call the randomizer func
 func Enter():	
 	#check_death()
@@ -44,12 +45,17 @@ func PhysicsUpdate(delta : float):
 	
 	
 	# move states
-	if (direction > 0 or Input.is_action_pressed("move_right")) or (direction < 0 or Input.is_action_pressed("move_left")): # moving right
-		Transitioned.emit(self, "SilentKnightMove")
+	if Input.is_action_just_pressed("jump") or  Input.is_action_just_pressed("move_left")  or  Input.is_action_just_pressed("move_right"):
+		 
+		if (direction > 0 or Input.is_action_pressed("move_right")) or (direction < 0 or Input.is_action_pressed("move_left")): # moving right
+			Transitioned.emit(self, "SilentKnightMove")
+			
+		if Input.is_action_just_pressed("jump") and player.is_on_floor():
+			Transitioned.emit(self, "SilentKnightJump")
+		
 	else:
 		Transitioned.emit(self, "SilentKnightIdle")
 	
-	if Input.is_action_just_pressed("jump") and player.is_on_floor():
-		Transitioned.emit(self, "SilentKnightJump")
+	
 	
 	

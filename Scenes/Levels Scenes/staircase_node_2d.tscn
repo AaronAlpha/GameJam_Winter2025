@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://don454v63t7on"]
+[gd_scene load_steps=5 format=3 uid="uid://don454v63t7on"]
 
 [ext_resource type="Texture2D" uid="uid://cncutrim2d8hw" path="res://Assets/Sprites/New Version/Home_Tileset-Sheet.png" id="1_6piqb"]
+[ext_resource type="PackedScene" uid="uid://dpe3mymow2244" path="res://Scenes/Levels Scenes/change_scene_area_2d.tscn" id="2_3f6ff"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3f6ff"]
 texture = ExtResource("1_6piqb")
@@ -67,3 +68,6 @@ sources/0 = SubResource("TileSetAtlasSource_3f6ff")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_bp5kh")
+
+[node name="ChangeScene_Area2D" parent="." instance=ExtResource("2_3f6ff")]
+visible = false
