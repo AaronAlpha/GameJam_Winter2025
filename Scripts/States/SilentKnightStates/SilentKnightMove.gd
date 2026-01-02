@@ -4,9 +4,6 @@ class_name SilentKnightMove
 
 
 
-
-
-
 # and then when we Enter() this state (EnemyIdle state), we call the randomizer func
 func Enter():
 	$"../../AnimatedSprite2D".play("move_animation")

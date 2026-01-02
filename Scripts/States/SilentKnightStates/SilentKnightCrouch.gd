@@ -18,4 +18,6 @@ func Update(delta : float):
 		
 
 func PhysicsUpdate(delta : float):
-	pass
+	if player:
+		
+		pass
