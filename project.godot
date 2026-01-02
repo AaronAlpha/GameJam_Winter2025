@@ -16,14 +16,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager_Singleton="*res://Scripts/game_manager_singleton.gd"
+GameManagerSingleton="*res://Scripts/game_manager_singleton.gd"
 
 [global_group]
 
 Player=""
 MiniBosses=""
-Minions=""
 FinalBoss=""
+Minions=""
 
 [input]
 

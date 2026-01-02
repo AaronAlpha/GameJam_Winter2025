@@ -379,7 +379,7 @@ script = ExtResource("1_1l7ou")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_sd0cb")
-animation = &"move_animation"
+animation = &"crouch_animation"
 autoplay = "idle_animation"
 
 [node name="L_Attack_AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
