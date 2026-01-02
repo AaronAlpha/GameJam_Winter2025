@@ -14,6 +14,10 @@ config/name="GameJam Winter 2025 - Beginner Game Jam"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager_Singleton="*res://Scripts/game_manager_singleton.gd"
+
 [global_group]
 
 Player=""
