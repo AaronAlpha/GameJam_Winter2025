@@ -1,11 +1,10 @@
-extends State
+extends SilentKnight_States
 
 class_name SilentKnightFall
 
-@export var player : CharacterBody2D
 
 func Enter():
-	pass
+	$"../../AnimatedSprite2D".play("fall_animation")
 
 func Update(delta : float):
 	pass

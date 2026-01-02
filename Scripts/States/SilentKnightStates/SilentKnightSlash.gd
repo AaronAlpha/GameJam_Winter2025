@@ -1,11 +1,9 @@
-extends State
+extends SilentKnight_States
 
 class_name SilentKnightSlash
 
-@export var player : CharacterBody2D
-
 func Enter():
-	pass
+	$"../../AnimatedSprite2D".play("slash_animation")
 
 func Update(delta : float):
 	pass

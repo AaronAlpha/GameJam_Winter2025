@@ -1,13 +1,13 @@
-extends State
+extends SilentKnight_States
 
 class_name SilentKnightJump
 
 
-@export var player : CharacterBody2D
-@export var jumpSpeed : int = -100
+
+
 
 func Enter():
-	pass
+	$"../../AnimatedSprite2D".play("jump_animation")
 
 func Update(delta : float):
 	pass
