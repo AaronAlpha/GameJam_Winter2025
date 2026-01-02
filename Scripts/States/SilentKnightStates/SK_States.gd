@@ -11,7 +11,7 @@ var enemy : CharacterBody2D
 var direction := Input.get_axis("move_left", "move_right") # made this a class_var so that can be 
 # accessed in other classes
 
-var player_enemy_Distance = 0
+var player_enemy_Distance : Vector2 = Vector2.ZERO
 
 var jump : bool = false
 var fall : bool = false

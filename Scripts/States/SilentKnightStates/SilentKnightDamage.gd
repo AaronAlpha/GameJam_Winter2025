@@ -6,6 +6,12 @@ class_name SilentKnightDamage
 
 func Enter():
 	
+	$"../../L_Attack_AnimatedSprite2D".visible = false
+	$"../../L_Attack_AnimatedSprite2D".stop()
+	$"../../R_Attack_AnimatedSprite2D".visible = false
+	$"../../R_Attack_AnimatedSprite2D".stop()
+	
+	$"../../AnimatedSprite2D".visible = true
 	$"../../AnimatedSprite2D".play("damage_animation")
 	
 

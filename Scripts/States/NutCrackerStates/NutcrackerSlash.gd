@@ -44,10 +44,13 @@ func Update(delta):
 
 func PhysicsUpdate(delta):
 	if enemy:
-		if direction.length() < 0:
+		
 			
-			GameManagerSingleton.playerHealth -= 5
-			print(GameManagerSingleton.playerHealth)
+		GameManagerSingleton.playerHealth -= 5
+		#print(GameManagerSingleton.playerHealth)
+		
+		if GameManagerSingleton.playerHealth == 0:
+			get_tree().change_scene_to_file("res://Scenes/credits_control.tscn")
 	
 	direction = player.global_position - enemy.global_position 
 	

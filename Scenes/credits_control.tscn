@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://d17xh4whg4rut"]
+[gd_scene load_steps=3 format=3 uid="uid://d17xh4whg4rut"]
+
+[ext_resource type="Script" uid="uid://cjyk3j64ykfrc" path="res://Scenes/Levels Scenes/credits_control.gd" id="1_s0uwm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0pwc"]
+bg_color = Color(0.80801046, 0.47544134, 0.6623995, 1)
 
 [node name="Credits_Control" type="Control"]
 layout_mode = 3
@@ -7,3 +12,55 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s0uwm")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u0pwc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -538.0
+offset_top = -139.0
+offset_right = -46.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Art: @the_beep
+Music/SFX: @reset71
+Programming: @.chocolate.milk.
+
+Godot Game Engine used
+Aesprite used
+Music - please ask @reset71"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 47.0
+offset_right = 1115.0
+offset_bottom = 155.0
+text = "Sorry you lost! ahaha... sry
+
+Art and Music/SFX are amazing. sorry for poor programming.
+First time coding a 2D rpg; new to the errors and logic and didn't know had to learn FSM and other - just excuses, sorry."
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 446.0
+offset_right = 444.0
+offset_bottom = 500.0
+text = "Main Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

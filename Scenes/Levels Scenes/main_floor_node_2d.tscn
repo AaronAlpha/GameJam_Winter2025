@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://c3chyt3u1wp1d"]
+[gd_scene load_steps=9 format=4 uid="uid://c3chyt3u1wp1d"]
 
 [ext_resource type="Texture2D" uid="uid://cncutrim2d8hw" path="res://Assets/Sprites/New Version/Home_Tileset-Sheet.png" id="1_qa64p"]
 [ext_resource type="Texture2D" uid="uid://cc6a6xj6eav3e" path="res://Assets/Sprites/New Version/items.png" id="2_j4uym"]
 [ext_resource type="PackedScene" uid="uid://ktb08c0333jo" path="res://Scenes/final_boss_character_body_2d.tscn" id="3_j4uym"]
 [ext_resource type="PackedScene" uid="uid://b4mt5ivycteyy" path="res://Scenes/silent_knight_character_body_2d.tscn" id="4_8ta2t"]
+[ext_resource type="PackedScene" uid="uid://2bi4ghrbgb22" path="res://Scenes/Buffs/health_area_2d.tscn" id="5_uagyx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ta2t"]
 texture = ExtResource("1_qa64p")
@@ -94,3 +95,6 @@ position = Vector2(-74, -16)
 [node name="Camera2D" type="Camera2D" parent="SilentKnight_CharacterBody2D"]
 position = Vector2(-1, -12)
 zoom = Vector2(4, 4)
+
+[node name="Health_Area2D" parent="." instance=ExtResource("5_uagyx")]
+position = Vector2(129, -114)

@@ -51,7 +51,11 @@ func PhysicsUpdate(delta):
 	if enemy:
 		
 		GameManagerSingleton.playerHealth -= 1
-		print(GameManagerSingleton.playerHealth)
+		
+		#print(GameManagerSingleton.playerHealth)
+		
+		if GameManagerSingleton.playerHealth == 0:
+			get_tree().change_scene_to_file("res://Scenes/credits_control.tscn")
 
 
 

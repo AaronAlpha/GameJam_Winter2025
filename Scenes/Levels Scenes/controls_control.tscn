@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceiqky2kpu6o5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3qpa"]
+bg_color = Color(0.27893087, 0.63394654, 0.8747593, 1)
+
+[node name="Controls_Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c3qpa")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 166.0
+offset_right = 1059.0
+offset_bottom = 475.0
+text = "A/D - Movement Keys; Left and RIght respectively 
+W/S- nothing
+Space - jump
+Q - Silent Knight's Stab
+E - Silent Knight's Slash
+(sorry poor programming; slash and stab don't appear)
+Silent Knight Health = 300
+Silent Knight (you) DPS -> Stab = 10; Slash = 30 
+
+Nutcracker Health = 300
+Nutcracker -> Stab = 1 DPS; Slash = 5 DPS
+(didn't know/have time to learn to implement enemy attack cooldown)
+Therefore, you are at disadvantage because Godot's Game Engine's timer will deduct ur health faster
+
+There are certain 'drops' around the level, these will especially benefit you. 
+
+There is a final boss however he is programming-wise broken, but I would like for you to acknowledge my teammate's art 
+"

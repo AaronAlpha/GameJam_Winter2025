@@ -26,3 +26,5 @@ func PhysicsUpdate(delta : float):
 	# changing the visiblity of the player - signaling its death
 	if player.visible:
 		player.visible = false
+	
+	get_tree().change_scene_to_file("res://Scenes/MainMenu_Control.tscn")

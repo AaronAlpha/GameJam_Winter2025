@@ -7,8 +7,20 @@ class_name SilentKnightIdle
 # and then when we Enter() this state (EnemyIdle state), we call the randomizer func
 func Enter():	
 	#check_death()
+	
 
+	$"../../L_Attack_AnimatedSprite2D".visible = false
+	$"../../L_Attack_AnimatedSprite2D".stop()
+	$"../../R_Attack_AnimatedSprite2D".visible = false
+	$"../../R_Attack_AnimatedSprite2D".stop()
+	
+	$"../../AnimatedSprite2D".visible = true
 	$"../../AnimatedSprite2D".play("idle_animation")
+
+
+
+	
+	
 
 
 func Update(delta : float):

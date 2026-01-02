@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://4ccs8cvketfo"]
+
+[ext_resource type="Texture2D" uid="uid://cc6a6xj6eav3e" path="res://Assets/Sprites/New Version/items.png" id="1_xwxji"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbd02"]
+
+[node name="SantaArea2D" type="Area2D"]
+position = Vector2(2, -9)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xwxji")
+region_enabled = true
+region_rect = Rect2(16, 31, 17, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_hbd02")
