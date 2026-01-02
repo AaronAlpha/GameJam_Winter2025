@@ -3,8 +3,9 @@ extends SilentKnight_States
 class_name SilentKnightSlash
 
 func Enter():
-	$"../../AnimatedSprite2D".play("slash_animation")
-
+	attackAnimations("slash_animation")
+	
+	enemy = get_tree().get_first_node_in_group("MiniBosses")
 func Update(delta : float):
 	pass
 

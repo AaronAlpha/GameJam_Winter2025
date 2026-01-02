@@ -190,7 +190,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ladjm"]
 size = Vector2(10, 38)
 
-[node name="Nutcracker_MB1_CharacterBody2D" type="CharacterBody2D"]
+[node name="Nutcracker_MB1_CharacterBody2D" type="CharacterBody2D" groups=["MiniBosses"]]
 script = ExtResource("1_l82r8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
