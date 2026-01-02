@@ -13,6 +13,10 @@ var direction := Input.get_axis("move_left", "move_right") # made this a class_v
 
 var player_enemy_Distance = 0
 
+var jump : bool = false
+var fall : bool = false
+var damage : bool = false
+
 var death : bool = false
 var slash : bool = false 
 var stab : bool = false 
