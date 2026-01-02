@@ -11,4 +11,7 @@ func Update(delta : float):
 	pass
 
 func PhysicsUpdate(delta : float):
-	pass
+	if player:
+		movement(delta)
+	
+	attackStates() # condensed func that includes code above - refer SK_States.gd for code

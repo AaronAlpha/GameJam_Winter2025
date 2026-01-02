@@ -13,24 +13,32 @@ var direction := Input.get_axis("move_left", "move_right") # made this a class_v
 func SK_facingDir():
 	if direction > 0 or Input.is_action_pressed("move_right"): # moving right
 		$"../../AnimatedSprite2D".flip_h = false
-		# the animation and collision should be 'on' on the left of the y-axis
-		$"../../LeftFacing_CollisionShape2D".visible = true
-		$"../../LeftFacing_CollisionShape2D".disabled = false
-		# the animation and collision should be 'off' on the right of the y-axis
-		$"../../RightFacing_CollisionShape2D".visible = false
-		$"../../RightFacing_CollisionShape2D".disabled = true
 			 
 	elif direction < 0 or Input.is_action_pressed("move_left"): # moving left
 		$"../../AnimatedSprite2D".flip_h = true
-		# the animation and collision should be 'off' on the left of the y-axis
-		$"../../LeftFacing_CollisionShape2D".visible = false
-		$"../../LeftFacing_CollisionShape2D".disabled = true
-		# the animation and collision should be 'on' on the right of the y-axis
-		$"../../RightFacing_CollisionShape2D".visible = true
-		$"../../RightFacing_CollisionShape2D".disabled = false
+
+
+func movement(delta):
+	if direction > 0 or Input.is_action_pressed("move_right"):
+		
+		# if it does exist: set velocity...
+		player.velocity.x = direction * move_speed
+		# should only be in x-axis
 	
+	elif direction < 0 or Input.is_action_pressed("move_left"):
+		# if it does exist: set velocity...
+		player.velocity.x = direction * move_speed
+		# should only be in x-axis
+	else:
+		player.velocity.x = move_toward(player.velocity.x, 0, move_speed)
 
 
+func attackStates():	
+	# attack change states
+	if Input.is_action_just_pressed("Slash"):
+		Transitioned.emit(self, "SilentKnightSlash")
+	elif Input.is_action_just_pressed("Stab"):
+		Transitioned.emit(self, "SilentKnightStab")
 
 
 # Called when the node enters the scene tree for the first time.
