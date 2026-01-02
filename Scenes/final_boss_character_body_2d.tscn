@@ -1,0 +1,158 @@
+[gd_scene load_steps=21 format=3 uid="uid://ktb08c0333jo"]
+
+[ext_resource type="Texture2D" uid="uid://6ss7dwm64eeh" path="res://Assets/Sprites/New Version/Froggo-Sheet.png" id="1_adc41"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4u0c"]
+atlas = ExtResource("1_adc41")
+region = Rect2(0, 0, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rh6cc"]
+atlas = ExtResource("1_adc41")
+region = Rect2(81, 0, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf60x"]
+atlas = ExtResource("1_adc41")
+region = Rect2(162, 0, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daxbc"]
+atlas = ExtResource("1_adc41")
+region = Rect2(243, 0, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4x4t"]
+atlas = ExtResource("1_adc41")
+region = Rect2(0, 0, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx6b3"]
+atlas = ExtResource("1_adc41")
+region = Rect2(81, 0, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75ajp"]
+atlas = ExtResource("1_adc41")
+region = Rect2(162, 0, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc5o6"]
+atlas = ExtResource("1_adc41")
+region = Rect2(243, 0, 81, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ai3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4u0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rh6cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf60x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daxbc")
+}],
+"loop": true,
+"name": &"idle_animation",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4x4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx6b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75ajp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc5o6")
+}],
+"loop": true,
+"name": &"move_animation",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adc41"]
+atlas = ExtResource("1_adc41")
+region = Rect2(0, 96, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6eis"]
+atlas = ExtResource("1_adc41")
+region = Rect2(81, 96, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwj6q"]
+atlas = ExtResource("1_adc41")
+region = Rect2(162, 96, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1smy"]
+atlas = ExtResource("1_adc41")
+region = Rect2(243, 96, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp6x1"]
+atlas = ExtResource("1_adc41")
+region = Rect2(324, 96, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1wu7"]
+atlas = ExtResource("1_adc41")
+region = Rect2(81, 96, 81, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ai3t"]
+atlas = ExtResource("1_adc41")
+region = Rect2(0, 96, 81, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4wqll"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adc41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6eis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwj6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1smy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp6x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1wu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ai3t")
+}],
+"loop": false,
+"name": &"attack_animation",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adc41"]
+size = Vector2(33, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6eis"]
+size = Vector2(33, 55)
+
+[node name="FinalBoss_CharacterBody2D" type="CharacterBody2D" groups=["FinalBoss"]]
+
+[node name="Move_AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -48)
+sprite_frames = SubResource("SpriteFrames_6ai3t")
+animation = &"idle_animation"
+autoplay = "idle_animation"
+
+[node name="Attack_AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -48)
+sprite_frames = SubResource("SpriteFrames_4wqll")
+animation = &"attack_animation"
+
+[node name="R_CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(19.5, -28.5)
+shape = SubResource("RectangleShape2D_adc41")
+debug_color = Color(0.95714015, 0, 0.53678, 0.41960785)
+
+[node name="L_CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-19.5, -28.5)
+shape = SubResource("RectangleShape2D_u6eis")
+debug_color = Color(0.57443357, 0.55467176, 0, 0.41960785)

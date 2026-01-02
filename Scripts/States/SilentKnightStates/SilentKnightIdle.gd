@@ -5,6 +5,12 @@ class_name SilentKnightIdle
 
 # and then when we Enter() this state (EnemyIdle state), we call the randomizer func
 func Enter():
+	$"../../CollisionShape2D".visible = true
+	$"../../CollisionShape2D".disabled = false
+
+	
+	$"../../Crouch_CollisionShape2D".visible = false
+	$"../../Crouch_CollisionShape2D".disabled = true
 	#check_death()
 	print("idle")
 	$"../../AnimatedSprite2D".play("idle_animation")
@@ -30,10 +36,7 @@ func PhysicsUpdate(delta : float):
 		
 		elif Input.is_action_just_pressed("jump") and player.is_on_floor():
 			Transitioned.emit(self, "SilentKnightJump")
-		
-		elif Input.is_action_pressed("crouch") and player.is_on_floor():
-			Transitioned.emit(self, "SilentKnightCrouch")
-		
+
 		elif !player.is_on_floor():
 			Transitioned.emit(self, "SilentKnightFall")
 		

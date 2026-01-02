@@ -224,8 +224,6 @@ visible = false
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_f33ga")
 animation = &"death_animation"
-frame = 6
-frame_progress = 1.0
 
 [node name="LeftFacing_CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1

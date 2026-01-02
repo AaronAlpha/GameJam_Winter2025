@@ -5,7 +5,7 @@ class_name SilentKnight_States
 @export var player : CharacterBody2D
 @export var idle_move_speed := 20 # for idle_state
 @export var move_speed := 100 # for move_state
-@export var jumpSpeed : int = -100 # for jump_state
+@export var jumpSpeed : int = -300 # for jump_state
 var enemy : CharacterBody2D
 
 var direction := Input.get_axis("move_left", "move_right") # made this a class_var so that can be 
