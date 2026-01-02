@@ -1,10 +1,10 @@
-extends State
+extends FinalBoss_States
 
-class_name NutcrackerIdle
+class_name FinalBossIdle
 
 
 @export var enemy : CharacterBody2D
-@export var idle_move_speed := 20
+@export var idle_move_speed := 10
 
 var player : CharacterBody2D
 
@@ -18,25 +18,25 @@ func random_wander():
 	
 	if move_dir[0] > 0: # chceking the sign of the x values
 		# if dir is +ve -> i.e. facing right
-		$"../../AnimatedSprite2D".flip_h = true
-		$"../../LeftFacing_CollisionShape2D".visible = false
-		$"../../LeftFacing_CollisionShape2D".disabled = true
-		$"../../RightFacing_CollisionShape2D".visible = true
-		$"../../RightFacing_CollisionShape2D".disabled = false
+		$"../../Move_AnimatedSprite2D".flip_h = true
+		$"../../L_CollisionShape2D".visible = false
+		$"../../L_CollisionShape2D".disabled = true
+		$"../../R_CollisionShape2D".visible = true
+		$"../../R_CollisionShape2D".disabled = false
 	else:
 		# if dir is -ve -> i.e. facing left
-		$"../../AnimatedSprite2D".flip_h = false
-		$"../../LeftFacing_CollisionShape2D".visible = true
-		$"../../LeftFacing_CollisionShape2D".disabled = false
-		$"../../RightFacing_CollisionShape2D".visible = false
-		$"../../RightFacing_CollisionShape2D".disabled = true
+		$"../../Move_AnimatedSprite2D".flip_h = false
+		$"../../L_CollisionShape2D".visible = true
+		$"../../L_CollisionShape2D".disabled = false
+		$"../../R_CollisionShape2D".visible = false
+		$"../../R_CollisionShape2D".disabled = true
 	
 	wander_time = randf_range(1, 2)
 
 
 # and then when we Enter() this state (EnemyIdle state), we call the randomizer func
 func Enter():
-	$"../../AnimatedSprite2D".play("move_animation")
+	$"../../Move_AnimatedSprite2D".play("move_animation")
 	
 	
 	player = get_tree().get_first_node_in_group("Player")
@@ -69,6 +69,5 @@ func PhysicsUpdate(delta : float):
 	
 	# if distance (direction) is within some threshold, we transition from Idle to Follow
 	if direction.length() < 100:
-		Transitioned.emit(self, "FinalBossFollow")
-	
+		Transitioned.emit(self, "NutcrackerFollow")
 	
