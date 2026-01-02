@@ -11,3 +11,13 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	move_and_slide()
+
+
+# the following 2 signals are used to check if the animation of the death, slash and stab are done
+
+func _on_l_attack_animated_sprite_2d_2_animation_finished() -> void:
+	pass # Replace with function body.
+
+
+func _on_r_attack_animated_sprite_2d_animation_finished() -> void:
+	pass # Replace with function body.

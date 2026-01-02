@@ -10,6 +10,14 @@ var enemy : CharacterBody2D
 
 var direction := Input.get_axis("move_left", "move_right") # made this a class_var so that can be 
 # accessed in other classes
+
+var player_enemy_Distance = 0
+
+var death : bool = false
+var slash : bool = false 
+var stab : bool = false 
+
+
 func SK_facingDir():
 	if direction > 0 or Input.is_action_pressed("move_right"): # moving right
 		$"../../AnimatedSprite2D".flip_h = false
